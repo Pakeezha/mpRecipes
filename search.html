@@ -4,29 +4,64 @@ recipes. -->
 
 <html>
 
-<head>
-	<title>Search</title>
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
-</head>
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" type="text/css" href="mystyles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"> </script>
+    </head>
 
 
-<Body>
-<p>
-Enter your ingredient: <input type="text" name="ingredient" placeholder="type here"><br>
-<button  type="button">Search</button >
-</p>
-<p>
-Advance Search: 
-<div id="list1" class="dropdown-check-list" tabindex="100">
-        <ul class="items">
-            <li><label><input type="checkbox" />Baked </label></li>
-            <li><label><input type="checkbox" />Fried </label></li>
-            <li><label><input type="checkbox" />Refrigerated </label></li>
-            <li><label><input type="checkbox" />Frozen </label></li>
-            <li><label><input type="checkbox" />Grilled </label></li>
-            <li><label><input type="checkbox" />Uncooked </label></li>
-        </ul>
-    </div>
-</p>
+    <Body>
+        <p>
+            Enter your ingredient: <br>
+            <input type="text" name="ingredient" placeholder="type here"><br>
+            <div id="additionalIngr"></div>
+            <button id="new">Add Another Ingredient</button>
+            <button  type="button">Search</button >
 
-</Body>
+            <!--Use of container: This allows user to add additional igredients during search
+            This piece of code was taken by professor Bell's example in class -->
+            <script>
+                document.getElementById("new").addEventListener("click", function() { addEvent();});
+                function addEvent(){
+                    $("#additionalIngr").append(
+                            '<div class="todoItem"><input type="text"/>' +
+                            '<button onclick="deleteItem(this.parentElement)">&#10006;</button></div>'
+                    );
+                }
+                function deleteItem(divElem){
+                    divElem.parentElement.removeChild(divElem);
+                }
+            </script>
+
+        </p>
+
+        <p>
+        Advance Search:
+
+        <!--Adds a transition feature to the check list. Whenever the user hovers over an item,
+         it slightly slides to the right-->
+        <div id="list1" class="dropdown-check-list" tabindex="100">
+                <ul class="items">
+                    <li><label><input type="checkbox" />Baked </label></li>
+                    <li><label><input type="checkbox" />Fried </label></li>
+                    <li><label><input type="checkbox" />Refrigerated </label></li>
+                    <li><label><input type="checkbox" />Frozen </label></li>
+                    <li><label><input type="checkbox" />Grilled </label></li>
+                    <li><label><input type="checkbox" />Uncooked </label></li>
+                </ul>
+            </div>
+        </p>
+
+        <img id="img1" src="image/utensils.jpg" alt="HTML5 Icon" style="width:200px;height:250px;">
+        <img id="img2" src="image/ing_pic.jpg" alt="HTML5 Icon" style="width:200px;height:250px;">
+        <img id="img3" src="image/ing2_pic.jpg" alt="HTML5 Icon" style="width:200px;height:250px;">
+        <img id="img4" src="image/spices.png" alt="HTML5 Icon" style="width:200px;height:250px;">
+        <img id="img5" src="image/meat.jpg" alt="HTML5 Icon" style="width:200px;height:250px;">
+
+        <!--Navigates to the previous page the browser was on -->
+        <input type="button" value="Go Back!" onclick="history.back()" />
+
+    </Body>
+
+</html>
