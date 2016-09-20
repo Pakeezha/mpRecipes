@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: lightsalmon;
 }
 
 h1 {
@@ -11,6 +11,10 @@ h1 {
     text-align: center;
     font: italic small-caps bold 44px Georgia, sans-serif; /* fallback for older browsers */
     font: extended italic small-caps bold 44px Georgia, sans-serif;
+}
+
+#pasta{
+
 }
 
 #img1{
@@ -57,8 +61,8 @@ input: invalid{
 }
 
 
-input[type="checkbox"]:hover {
-  height: 20px;
+input[type="checkbox"]:checked {
+  height: 15px;
   -webkit-transition: width 0.1s ease;
   -moz-transition: width 0.1s ease;
   -o-transition: width 0.1s ease;
@@ -66,6 +70,7 @@ input[type="checkbox"]:hover {
   transition: width 0.1s ease;
 }
 
-input[type="checkbox"]:hover {
+input[type="checkbox"]:checked {
   width: 30px;
 }
+
