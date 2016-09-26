@@ -11,6 +11,7 @@ The user may view popular or trending recipes by getting on the trending page. U
 3. Search
 
 The users can search for any recipe by entering an ingredient in and it will take them to a list of recipes that include that ingredient. 
+
 4. Bucket
 
 The user may save any recipe that they searched into their bucket page. They can come back to their bucket at anytime. 
