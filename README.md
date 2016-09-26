@@ -1,5 +1,4 @@
-# mpRecipes
-#this is a readmefile
+# RecipeBucket
 
 1. Login/register
 
