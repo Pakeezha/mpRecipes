@@ -19,3 +19,4 @@ The user may save any recipe that they searched into their bucket page. They can
 Two scenarios implmented:
 Login
 Search
+Trending recipe page
