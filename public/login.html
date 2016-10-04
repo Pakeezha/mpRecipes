@@ -15,6 +15,17 @@ that gives them access to their account  -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+	<script src="https://facebook.github.io/react/js/jsfiddle-integration-babel.js"></script>
+	<script src="https://fb.me/react-15.0.0.js"></script>
+	<script src="https://fb.me/react-dom-15.0.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+	<!-- ReactFire -->
+	<script src="https://cdn.firebase.com/libs/reactfire/1.0.0/reactfire.min.js"></script>
+
+
+
 	<!--converts html tabs to tabs in jquery -->
 	<script>
 		$( function() {
@@ -117,42 +128,6 @@ that gives them access to their account  -->
 	</div>
 
 
-	<script>
-		/*
-
-		document.getElementById("Submit").addEventListener("click", function() { myFunc();});
-		function myFunc() {
-			<!-- fake data just to test code. Later we will connect to the database to log users in-->
-			var correct_email="user1@gmail.com";
-			var correct_password="password";
-
-			var entered_email=document.getElementById("email2").value;
-			var entered_password=document.getElementById("password2").value;
-
-			if(entered_email==""|| entered_password==""){
-				confirm("Please enter all the required fields");
-			}
-			else if (correct_email!=entered_email){
-				document.getElementById("warningText").innerHTML = "you entered an invalid email";
-			}
-			else if(correct_password!=entered_password) {
-				document.getElementById("warningText").innerHTML = "your password is incorrect";
-			}
-			else{
-				document.getElementById("warningText").innerHTML = "Access Granted!";
-			}
-		}
-
-		<!--if the user clicks the "forgot password" option -->
-		document.getElementById("forgotPassword").addEventListener("click", function() { enterEmail();});
-		function enterEmail() {
-			prompt("Please enter your email address and we will email you your password:");
-		}
-
-		*/
-	</script>
-
-
 	<!--Code to connect to firebase-->
 	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
 	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
@@ -162,7 +137,25 @@ that gives them access to their account  -->
 	<!--Navigates to the previous page the browser was on -->
 	<form action = "landing.html">
 	</form>
-	<input type="button" value="Go Back!" onclick="history.back()" />
+
+
+	<div id="example">
+		<!-- This element's contents will be replaced with your component. -->
+	</div>
+
+
+	<!-- Using React to say hello to the person -->
+	<script type="text/babel">
+		var HelloMessage = React.createClass({
+			render: function () {
+				return <h1>Hello {this.props.message}</h1>;
+			}
+		});
+
+		var blue=document.getElementById("firstName").value;
+		ReactDOM.render(<HelloMessage message={blue} />, document.getElementById('example'));
+	</script>
+
 
 </Body>
 
