@@ -76,24 +76,26 @@
                     var s = document.getElementsByTagName('script')[0];
                     s.parentNode.insertBefore(gcse, s);
                 })();
-
+                var str="bake";
             </script>
-            <gcse:search></gcse:search>
+
+            <!-- Place this tag where you want both of the search box and the search results to render -->
+             <gcse:search as_oq="bake">Please search here</gcse:search>
+
         </p>
 
         <p>
-        Advance Search:
 
         <!--Adds a transition feature to the check list. Whenever the user hovers over an item,
          it slightly slides to the right-->
         <div id="list1" class="dropdown-check-list" tabindex="100">
                 <ul class="items">
-                    <li><label><input type="checkbox" />Baked </label></li>
-                    <li><label><input type="checkbox" />Fried </label></li>
-                    <li><label><input type="checkbox" />Refrigerated </label></li>
-                    <li><label><input type="checkbox" />Frozen </label></li>
-                    <li><label><input type="checkbox" />Grilled </label></li>
-                    <li><label><input type="checkbox" />Uncooked </label></li>
+                    <li><label><input id= "Baked" type="checkbox" />Baked </label></li>
+                    <li><label><input id= "Fried" type="checkbox" />Fried </label></li>
+                    <li><label><input id= "Refrigerated" type="checkbox" />Refrigerated </label></li>
+                    <li><label><input id= "Frozen" type="checkbox" />Frozen </label></li>
+                    <li><label><input id= "Grilled" type="checkbox" />Grilled </label></li>
+                    <li><label><input id= "Uncooked" type="checkbox" />Uncooked </label></li>
                 </ul>
             </div>
         </p>
