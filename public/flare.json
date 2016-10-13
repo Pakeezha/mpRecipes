@@ -1,0 +1,60 @@
+{
+ "name": "flare",
+
+   "children": [
+
+     {
+       "name": "cooked",
+       "children": [
+         {
+           "name": "Spaghetti", "size": 5219,
+           "url": "http://www.food.com/recipe/jo-mamas-world-famous-spaghetti-22782",
+           "pic": "pic.jpg"},
+
+         {"name": "Veggie Burger", "size": 3509,
+           "url": "http://allrecipes.com/recipe/85452/homemade-black-bean-veggie-burgers/",
+           "pic": "vburger.jpg"},
+
+         {"name": "Sauce", "size": 3509,
+           "url": "http://cooking.nytimes.com/recipes/1017650-quick-fresh-tomato-sauce",
+           "pic": "sauce.jpeg"}
+       ]
+     },
+
+     {
+       "name": "baked",
+       "children": [
+         {"name": "Thin Crust Pizza", "size": 3165,  "wid": 200, "h": 200,
+           "url": "http://www.thekitchn.com/recipe-homemade-thin-crust-pizza-recipes-from-the-kitchn-45499",
+           "pic": "pic2.jpg"
+         }
+       ]
+     },
+
+     {
+       "name": "fried",
+       "children": [
+         {"name": "Fries", "size": 3509,
+           "url": "http://allrecipes.com/recipe/50223/homemade-crispy-seasoned-french-fries/",
+           "pic": "fries.jpg"},
+
+         {"name": "Rice", "size": 3509,
+           "url": "http://allrecipes.com/recipe/79543/fried-rice-restaurant-style/",
+           "pic": "rice.jpg"}
+       ]
+     },
+
+
+     {
+       "name": "uncooked",
+       "children": [
+         {"name": "Fruit Salad", "size": 3509,
+           "url": "http://allrecipes.com/recipe/214947/perfect-summer-fruit-salad/",
+           "pic": "fruits.jpg"}
+       ]
+     }
+
+
+   ]
+
+}
