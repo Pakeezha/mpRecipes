@@ -109,6 +109,12 @@
                 confirm("Hello ".concat(userSnap.val().firstName)+ ". Welcome to Recipe Bucket!");
         });
 
+        //Reading data from the database to say hi to the user
+        var starCountRef = firebase.database().ref('favFoods/');
+        starCountRef.on('value', function(snapshot) {
+            console.log( snapshot.getKey() + snapshot.val());
+        });
+
         //Stores data into the database using push
         firebase.database().ref('favFoods/').push({  favFood: favFood.value});
     }
