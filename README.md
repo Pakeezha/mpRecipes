@@ -16,7 +16,8 @@ The users can search for any recipe by entering an ingredient in and it will tak
 
 The user may save any recipe that they searched into their bucket page. They can come back to their bucket at anytime. 
 
-Two scenarios implmented:
+Four scenarios implmented:
 Login
 Search
-Trending recipe page
+Trending recipes (updated to use React)
+Bucket (includes d3 visual)
