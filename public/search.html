@@ -25,6 +25,8 @@
 
         <script type="text/babel" src="app.jsx"> </script>
         <link rel="stylesheet" type="text/css" href="mystyles.css">
+
+        <script type="text/javascript" src="jasmineTests.js"></script>
     </head>
     
 
@@ -32,12 +34,32 @@
 <Body>
         <p>
 
-            <div id="container">
+       <script>
+           //testing if the react menu bar on the search page
+           describe("landing menu link", function() {
+
+               var TestUtils = React.addons.TestUtils;
+               var todoAppComponent, element;
+
+               beforeEach(function (done) {
+                   element = React.createElement(MyReactBootstrapButton);
+                   todoAppComponent = TestUtils.renderIntoDocument(element);
+                   todoAppComponent.setState({items: [{text: "testItem"}]}, done);
+               });
+               it("Can click on landing button", function(){
+                   var button = TestUtils.findRenderedDOMComponentWithTag(todoAppComponent,"landing");
+                   TestUtils.Simulate.click(button);
+               });
+           });
+
+       </script>
+
+        <div id="container">
                 <!-- This element's contents will be replaced with your component. -->
             </div>
 
 
-        <!--
+
             <div id="additionalIngr"></div>
             <button id="new">Add Another Ingredient</button>
             <button  type="button">Search</button >
@@ -45,7 +67,7 @@
             <!--Use of container: This allows user to add additional igredients during search
             This piece of code was taken by professor Bell's example in class -->
 
-           <!-- <script>
+            <script>
                 document.getElementById("new").addEventListener("click", function() { addEvent();});
                 function addEvent(){
                     $("#additionalIngr").append(
@@ -58,7 +80,7 @@
                 function deleteItem(divElem){
                     divElem.parentElement.removeChild(divElem);
                 }
-            </script> -->
+            </script>
 
 
         </p>

@@ -10,10 +10,10 @@ var MyReactBootstrapButton = React.createClass({
 
         return (<div>
             <ButtonGroup>
-                <Button bsStyle="success" href="landing.html">Home </Button>
-                <Button bsStyle="success" href="login.html">Login</Button>
-                <Button bsStyle="success" href="bucket.html">Bucket</Button>
-                <Button bsStyle="success" href="trending.html">Trending</Button>
+                <Button id= "landing" bsStyle="success" href="landing.html">Home </Button>
+                <Button id= "login" bsStyle="success" href="login.html">Login</Button>
+                <Button id= "bucket" bsStyle="success" href="bucket.html">Bucket</Button>
+                <Button id= "trending" bsStyle="success" href="trending.html">Trending</Button>
             </ButtonGroup>
         </div>);
     }
