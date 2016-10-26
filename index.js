@@ -8,6 +8,8 @@ app.get('/', function (req, res) {
     counter++;
 });
 
+app.use(express.static('public'));
+
 app.listen(port, function () {
     console.log('Example app listening on port' + port);
 });
