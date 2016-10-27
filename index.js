@@ -4,7 +4,7 @@ var port = process.env.PORT || 3000;
 
 var counter = 0;
 app.get('/', function (req, res) {
-    res.send('Hello World has been said ' + counter + ' times!');
+    res.send('/login');
     counter++;
 });
 
