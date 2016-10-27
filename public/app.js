@@ -16,12 +16,15 @@
     firebase.initializeApp(config);
     var rootRef = firebase.database().ref();
 
+    var storageRef = firebase.storage().ref();
+
     //Taking in user input
     var firstN= document.getElementById("firstName");
     var lastN= document.getElementById("lastName");
     var registerEmail= document.getElementById("email1");
     var registerPassword= document.getElementById("password1");
     var favFood= document.getElementById("favFood");
+    var profilePicture=document.getElementById("profileImage").value;
 
     var entered_email=document.getElementById("email2");
     var entered_password=document.getElementById("password2");
@@ -115,8 +118,29 @@
             console.log( snapshot.getKey() + snapshot.val());
         });
 
-        //Stores data into the database using push
+
         firebase.database().ref('favFoods/').push({  favFood: favFood.value});
+
+
+        //Stores the user image into firebase
+        storageRef.child('images/' + profilePicture).put(profilePicture ).then(function(snapshot) {
+            console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+            var url = snapshot.metadata.downloadURLs[0];
+            console.log('File available at', url);
+            // [START_EXCLUDE]
+            document.getElementById('linkbox').innerHTML = '<a href="' +  url + '">Click For File</a>';
+            // [END_EXCLUDE]
+        }).catch(function(error) {
+            // [START onfailure]
+            console.error('Upload failed:', error);
+            // [END onfailure]
+        });
+        ref.put(profilePicture).then(function(snapshot) {
+            console.log('Uploaded a blob or file!');
+        });
+
+
+
     }
 
     //Clicking on the register button passes user data to the database
