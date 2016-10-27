@@ -21,3 +21,6 @@ Login
 Search
 Trending recipes (updated to use React)
 Bucket (includes d3 visual)
+
+heroku URL:
+https://glacial-ridge-83182.herokuapp.com/login.html
