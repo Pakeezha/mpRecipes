@@ -1,7 +1,7 @@
 {
   "name": "myapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Login/register",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,16 @@
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "cool-ascii-faces": "1.3.4",
     "express": "^4.14.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pakeezha/RecipeBucket.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Pakeezha/RecipeBucket/issues"
+  },
+  "homepage": "https://github.com/Pakeezha/RecipeBucket#readme"
 }
