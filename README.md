@@ -24,3 +24,6 @@ Bucket (includes d3 visual)
 
 heroku URL:
 https://glacial-ridge-83182.herokuapp.com/login.html
+
+HW 8 requirments:
+The three scenarios which we fully implemented were user login/register when making an account or using an exising one, searching recipes online by inputting an ingredient, and lastly a tredning recipes page to see whats new. 
