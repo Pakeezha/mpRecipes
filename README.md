@@ -23,4 +23,10 @@ Trending recipes (updated to use React)
 Bucket (includes d3 visual)
 
 heroku URL:
-https://glacial-ridge-83182.herokuapp.com/login.html
+https://protected-eyrie-35951.herokuapp.com/
+
+HW 8 requirments:
+The three scenarios which we fully implemented were:
+1) user login/register when making an account or using an exising one. The user's firstname and unique token is printed in the javascript console
+2) searching recipes online by inputting an ingredient.
+3) lastly a tredning recipes page to see whats new. 

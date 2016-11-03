@@ -9,24 +9,39 @@
          {
            "name": "Spaghetti", "size": 5219,
            "url": "http://www.food.com/recipe/jo-mamas-world-famous-spaghetti-22782",
-           "pic": "pic.jpg"},
-
-         {"name": "Veggie Burger", "size": 3509,
-           "url": "http://allrecipes.com/recipe/85452/homemade-black-bean-veggie-burgers/",
-           "pic": "vburger.jpg"},
-
-         {"name": "Sauce", "size": 3509,
-           "url": "http://cooking.nytimes.com/recipes/1017650-quick-fresh-tomato-sauce",
-           "pic": "sauce.jpeg"}
+           "pic": "image/pic.jpg"},
+         {
+           "name": "Avocado Mac and Cheese", "size": 5219,
+           "url": "http://www.epicurious.com/recipes/member/views/stovetop-avocado-mac-and-cheese-52639981",
+           "pic": "image/avoMacCheese.jpg"}
        ]
      },
+
+     {
+       "name": "burger",
+       "children": [
+         {"name": "Veggie Burger", "size": 3509,
+           "url": "http://allrecipes.com/recipe/85452/homemade-black-bean-veggie-burgers/",
+           "pic": "image/vburger.jpg"}
+       ]
+     },
+
+     {
+       "name": "sauce",
+       "children": [
+         {"name": "Sauce", "size": 3509,
+           "url": "http://cooking.nytimes.com/recipes/1017650-quick-fresh-tomato-sauce",
+           "pic": "image/sauce.jpeg"}
+       ]
+     },
+
 
      {
        "name": "baked",
        "children": [
          {"name": "Thin Crust Pizza", "size": 3165,  "wid": 200, "h": 200,
            "url": "http://www.thekitchn.com/recipe-homemade-thin-crust-pizza-recipes-from-the-kitchn-45499",
-           "pic": "pic2.jpg"
+           "pic": "image/pic2.jpg"
          }
        ]
      },
@@ -36,11 +51,20 @@
        "children": [
          {"name": "Fries", "size": 3509,
            "url": "http://allrecipes.com/recipe/50223/homemade-crispy-seasoned-french-fries/",
-           "pic": "fries.jpg"},
+           "pic": "image/fries.jpg"},
 
          {"name": "Rice", "size": 3509,
            "url": "http://allrecipes.com/recipe/79543/fried-rice-restaurant-style/",
-           "pic": "rice.jpg"}
+           "pic": "image/rice.jpg"}
+       ]
+     },
+
+     {
+       "name": "peppers",
+       "children": [
+         {"name": "Jalapeno Popper Grilled Cheese Sandwich", "size": 3509,
+           "url": "http://www.foodnetwork.com/recipes/jeff-mauro/jalapeno-popper-grilled-cheese-recipe.html",
+           "pic": "image/jalapeno.jpg"}
        ]
      },
 
@@ -50,7 +74,25 @@
        "children": [
          {"name": "Fruit Salad", "size": 3509,
            "url": "http://allrecipes.com/recipe/214947/perfect-summer-fruit-salad/",
-           "pic": "fruits.jpg"}
+           "pic": "image/fruits.jpg"}
+       ]
+     },
+
+     {
+       "name": "drinks",
+       "children": [
+         {"name": "Iced Coffee", "size": 3509,
+           "url": "http://thepioneerwoman.com/cooking/perfect-iced-coffee",
+           "pic": "image/coffee.jpg"}
+       ]
+     },
+
+     {
+       "name": "boiled",
+       "children": [
+         {"name": "Crash Hot Potatoes", "size": 3509,
+           "url": "http://thepioneerwoman.com/cooking/crash-hot-potatoes",
+           "pic": "image/potatoes.jpg"}
        ]
      }
 

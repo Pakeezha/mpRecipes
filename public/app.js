@@ -24,7 +24,7 @@
     var registerEmail= document.getElementById("email1");
     var registerPassword= document.getElementById("password1");
     var favFood= document.getElementById("favFood");
-    var profilePicture=document.getElementById("profileImage").value;
+    //var profilePicture=document.getElementById("profileImage").value;
 
     var entered_email=document.getElementById("email2");
     var entered_password=document.getElementById("password2");
@@ -70,6 +70,9 @@
         if(entered_email.value!="") {
             if (user) {
                 console.log("Access Granted");
+                user.getToken().then(function(data) {
+                    console.log("Token: "+ data)
+                });
                 //When access is granted, redirect to the search page
                 window.location.href = "search.html";
             }
@@ -80,6 +83,10 @@
         else if(registerEmail.value!="") {
             if (user) {
                 console.log("Access Granted");
+                user.getToken().then(function(data) {
+                    console.log("Token: "+ data)
+                });
+
                 window.location.href = "search.html";
             }
             else {
@@ -108,19 +115,21 @@
         var path = directory.concat(usrName);
 
         rootRef.child(path).once('value', function(userSnap) {
-                console.log( userSnap.val().firstName);
+                console.log( "first name: " + userSnap.val().firstName);
                 confirm("Hello ".concat(userSnap.val().firstName)+ ". Welcome to Recipe Bucket!");
         });
 
         //Reading data from the database to say hi to the user
         var starCountRef = firebase.database().ref('favFoods/');
         starCountRef.on('value', function(snapshot) {
-            console.log( snapshot.getKey() + snapshot.val());
+            //console.log( snapshot.getKey() + snapshot.val());
         });
 
 
         firebase.database().ref('favFoods/').push({  favFood: favFood.value});
 
+
+        /*
 
         //Stores the user image into firebase
         storageRef.child('images/' + profilePicture).put(profilePicture ).then(function(snapshot) {
@@ -139,6 +148,7 @@
             console.log('Uploaded a blob or file!');
         });
 
+        */
 
 
     }
