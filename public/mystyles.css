@@ -56,7 +56,7 @@ h1 {
 .invisible{
 	display:none;
 }
-input: invalid{
+input:invalid{
 	border:2px solid red;
 }
 

@@ -28,12 +28,81 @@
 		}
 
 	</style>
+
+
+	<!--Bootstrap links -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+
 </head>
 <body>
-<div id="body">
-	<p align="center" style="font-size:20px" ><b>Trending Recipes</b></p>
-	<div id="footer">
-	</div>
+	<!--Code for the menu bar -->
+	<style>
+		.navbar {
+			background: rgba(0,0,0,0.2);
+			background-border: rgba(0,0,0,0.2);
+		}
+		#menu {
+			color: white;
+			font-family: 'Raleway', sans-serif;
+			font-size: 20px;
+			font-weight: bold;
+			font-variant: small-caps;
+			color: white; text-shadow: black 0.1em 0.1em 0.2em;
+		}
+		.navbar li {
+			color: blue;
+		}
+	</style>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+						data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="landing.html">
+					<img alt="Brand" src="image/logo.jpg">
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="landing.html" id="menu">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="search.html" id="menu">Search</a></li>
+					<li><a href="bucket.html" id="menu">Bucket</a></li>
+					<li><a href="trending.html" id="menu">Trending Recipes</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li> <a href="login.html" id="menu">Login</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
+
+	<div id="body">
+		<p align="center" style="font-size:20px" ><b>Trending Recipes</b></p>
+		<div id="footer">
+		</div>
 </div>
 <script type="text/javascript">
 
@@ -80,7 +149,17 @@
 		cell.append("svg:rect")
 				.attr("width", function(d) { return d.dx - 1; })
 				.attr("height", function(d) { return d.dy - 1; })
+				//.style("fill", function(d) { return color(d.parent.name); });
 				.style("fill", function(d) { return color(d.parent.name); });
+
+		cell.append("defs")
+				.append("pattern")
+				.attr("id", "bg")
+				.append("image")
+				.attr("xlink:href", "image/coffee.jpg");
+
+		cell.append("rect")
+				.attr("fill", "url(#bg)");
 
 		cell.append("svg:a")
 				.attr("xlink:href", function(d){return d.url;})  // <-- reading the new "url" property
