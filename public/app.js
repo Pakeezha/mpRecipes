@@ -28,7 +28,43 @@
 
     var entered_email=document.getElementById("email2");
     var entered_password=document.getElementById("password2");
+    function allLetter(firstN)  
+      {   
+      var letters = /^[A-Za-z]+$/;  
+      if(firstN.value.match(letters))  
+      {  
+      confirm('hello');  
+      }  
+      else  
+      {  
+      confirm('put letter!');  
+      }  
+      }
+      // Get the modal
+var modal = document.getElementById('myModal');
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+} 
 
     //If the user is trying to log in
     document.getElementById("Submit").addEventListener("click", function() { loginFunc();});
@@ -82,16 +118,12 @@
         }
         else if(registerEmail.value!="") {
             if (user) {
+                console.log("Access Granted");
+                user.getToken().then(function(data) {
+                    console.log("Token: "+ data)
+                });
 
-                var letters = /^[A-Za-z]+$/;
-                if(firstN.value.match(letters)) {
-                    console.log("Access Granted");
-                    user.getToken().then(function(data) {
-                        console.log("Token: "+ data)
-                    });
-
-                    window.location.href = "search.html";
-                }
+                window.location.href = "search.html";
             }
             else {
                 console.log("not logged in");
@@ -102,47 +134,60 @@
     //storing user data to the database using set
     function writeUserData(fname, lname, email, pass) {
 
+	
+		
+        //The username is the first part of the email
+        var usrName= email.split("@",1);
 
-        var letters = /^[A-Za-z]+$/;
-        if(fname.match(letters)) {
+        //The users will be listed by their user names
+        //followed by their name, email, and password arranged in a set
+        var fb= firebase.database().ref('users/' + usrName).set({
+            firstName: fname,
+            lastName: lname,
+            email: email,
+            password : pass
+        });
 
+        //Reading data from the database to say hi to the user
+        var directory = "users/";
+        var path = directory.concat(usrName);
 
-            //The username is the first part of the email
-            var usrName= email.split("@",1);
-
-            //The users will be listed by their user names
-            //followed by their name, email, and password arranged in a set
-            var fb= firebase.database().ref('users/' + usrName).set({
-                firstName: fname,
-                lastName: lname,
-                email: email,
-                password : pass
-            });
-
-            //Reading data from the database to say hi to the user
-            var directory = "users/";
-            var path = directory.concat(usrName);
-
-            rootRef.child(path).once('value', function(userSnap) {
+        rootRef.child(path).once('value', function(userSnap) {
                 console.log( "first name: " + userSnap.val().firstName);
                 confirm("Hello ".concat(userSnap.val().firstName)+ ". Welcome to Recipe Bucket!");
-            });
+        });
 
-            //Reading data from the database to say hi to the user
-            var starCountRef = firebase.database().ref('favFoods/');
-            starCountRef.on('value', function(snapshot) {
-                //console.log( snapshot.getKey() + snapshot.val());
-            });
-
-
-            firebase.database().ref('favFoods/').push({  favFood: favFood.value});
+        //Reading data from the database to say hi to the user
+        var starCountRef = firebase.database().ref('favFoods/');
+        starCountRef.on('value', function(snapshot) {
+            //console.log( snapshot.getKey() + snapshot.val());
+        });
 
 
-        }
-        else {
-            console.log("Please only enter letters-no digits");
-            confirm("Please only enter letters for ");
-        }
+        firebase.database().ref('favFoods/').push({  favFood: favFood.value});
+
+
+        /*
+
+        //Stores the user image into firebase
+        storageRef.child('images/' + profilePicture).put(profilePicture ).then(function(snapshot) {
+            console.log('Uploaded', snapshot.totalBytes, 'bytes.');
+            var url = snapshot.metadata.downloadURLs[0];
+            console.log('File available at', url);
+            // [START_EXCLUDE]
+            document.getElementById('linkbox').innerHTML = '<a href="' +  url + '">Click For File</a>';
+            // [END_EXCLUDE]
+        }).catch(function(error) {
+            // [START onfailure]
+            console.error('Upload failed:', error);
+            // [END onfailure]
+        });
+        ref.put(profilePicture).then(function(snapshot) {
+            console.log('Uploaded a blob or file!');
+        });
+
+        */
+
 
     }
 
