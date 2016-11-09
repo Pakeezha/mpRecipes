@@ -82,12 +82,16 @@
         }
         else if(registerEmail.value!="") {
             if (user) {
-                console.log("Access Granted");
-                user.getToken().then(function(data) {
-                    console.log("Token: "+ data)
-                });
 
-                window.location.href = "search.html";
+                var letters = /^[A-Za-z]+$/;
+                if(firstN.value.match(letters)) {
+                    console.log("Access Granted");
+                    user.getToken().then(function(data) {
+                        console.log("Token: "+ data)
+                    });
+
+                    window.location.href = "search.html";
+                }
             }
             else {
                 console.log("not logged in");
@@ -98,58 +102,47 @@
     //storing user data to the database using set
     function writeUserData(fname, lname, email, pass) {
 
-        //The username is the first part of the email
-        var usrName= email.split("@",1);
 
-        //The users will be listed by their user names
-        //followed by their name, email, and password arranged in a set
-        var fb= firebase.database().ref('users/' + usrName).set({
-            firstName: fname,
-            lastName: lname,
-            email: email,
-            password : pass
-        });
+        var letters = /^[A-Za-z]+$/;
+        if(fname.match(letters)) {
 
-        //Reading data from the database to say hi to the user
-        var directory = "users/";
-        var path = directory.concat(usrName);
 
-        rootRef.child(path).once('value', function(userSnap) {
+            //The username is the first part of the email
+            var usrName= email.split("@",1);
+
+            //The users will be listed by their user names
+            //followed by their name, email, and password arranged in a set
+            var fb= firebase.database().ref('users/' + usrName).set({
+                firstName: fname,
+                lastName: lname,
+                email: email,
+                password : pass
+            });
+
+            //Reading data from the database to say hi to the user
+            var directory = "users/";
+            var path = directory.concat(usrName);
+
+            rootRef.child(path).once('value', function(userSnap) {
                 console.log( "first name: " + userSnap.val().firstName);
                 confirm("Hello ".concat(userSnap.val().firstName)+ ". Welcome to Recipe Bucket!");
-        });
+            });
 
-        //Reading data from the database to say hi to the user
-        var starCountRef = firebase.database().ref('favFoods/');
-        starCountRef.on('value', function(snapshot) {
-            //console.log( snapshot.getKey() + snapshot.val());
-        });
-
-
-        firebase.database().ref('favFoods/').push({  favFood: favFood.value});
+            //Reading data from the database to say hi to the user
+            var starCountRef = firebase.database().ref('favFoods/');
+            starCountRef.on('value', function(snapshot) {
+                //console.log( snapshot.getKey() + snapshot.val());
+            });
 
 
-        /*
+            firebase.database().ref('favFoods/').push({  favFood: favFood.value});
 
-        //Stores the user image into firebase
-        storageRef.child('images/' + profilePicture).put(profilePicture ).then(function(snapshot) {
-            console.log('Uploaded', snapshot.totalBytes, 'bytes.');
-            var url = snapshot.metadata.downloadURLs[0];
-            console.log('File available at', url);
-            // [START_EXCLUDE]
-            document.getElementById('linkbox').innerHTML = '<a href="' +  url + '">Click For File</a>';
-            // [END_EXCLUDE]
-        }).catch(function(error) {
-            // [START onfailure]
-            console.error('Upload failed:', error);
-            // [END onfailure]
-        });
-        ref.put(profilePicture).then(function(snapshot) {
-            console.log('Uploaded a blob or file!');
-        });
 
-        */
-
+        }
+        else {
+            console.log("Please only enter letters-no digits");
+            confirm("Please only enter letters for ");
+        }
 
     }
 

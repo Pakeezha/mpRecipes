@@ -5,7 +5,7 @@
  but changed it to fit our website-->
 
 <html xmlns:xlink="http://www.w3.org/1999/xlink">
-<head>
+
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<link type="text/css" rel="stylesheet" href="style.css"/>
 	<script type="text/javascript" src="d3.js"></script>
@@ -41,8 +41,35 @@
 
 	<link rel="stylesheet" type="text/css" href="mystyles.css">
 
-</head>
-<body>
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>D3 v4 - Image Gallery‎ </title>
+		<style>
+			html, body{
+				width: 100%;
+				height: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			#graph {
+				width: 100%;
+				height: 100%;
+
+			}
+			.node {
+				position: absolute;
+				background-size:cover;
+			}
+
+		</style>
+	</head>
+
+	<body>
+
 	<!--Code for the menu bar -->
 	<style>
 		.navbar {
@@ -94,138 +121,85 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-			crossorigin="anonymous"></script>
+	<div id="box">hello</div>
 
-	<div id="body">
-		<p align="center" style="font-size:20px" ><b>Trending Recipes</b></p>
-		<div id="footer">
-		</div>
-</div>
-<script type="text/javascript">
-
-	var w = 1280 - 80,
-			h = 800 - 180,
-			x = d3.scale.linear().range([0, w]),
-			y = d3.scale.linear().range([0, h]),
-			color = d3.scale.category20c(),
-			root,
-			node;
-
-	var treemap = d3.layout.treemap()
-			.round(false)
-			.size([w, h])
-			.sticky(true)
-			.value(function(d) { return d.size; });
-
-	var svg = d3.select("#body").append("div")
-			.attr("class", "chart")
-			.style("width", w + "px")
-			.style("height", h + "px")
-			.append("svg:svg")
-			.attr("width", w)
-			.attr("height", h)
-			.append("svg:g")
-			.attr("transform", "translate(.5,.5)");
+	<div id="graph"></div>
 
 
-	d3.json("flare.json", function(data) {
-		node = root = data;
 
-		var nodes = treemap.nodes(root)
-				.filter(function(d) { return !d.children; });
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.1/d3.min.js"></script>
+	<script>
+		!(function(){
+			"use strict"
 
-		var cell = svg.selectAll("g")
-				.data(nodes)
-				.enter().append("svg:g")
-				.attr("class", "cell")
-				.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-				//.on("click", function(d) { return zoom(node == d.parent ? root : d.parent); })
-				.on("click", function(d) { return(window.location.assign(d.url) );});
+			var data = [
+				{id:"root",value:null},
+				{id:"root.1",value:null,img:"image/pic.jpg", link:"http://www.food.com/recipe/jo-mamas-world-famous-spaghetti-22782" },
+				{id:"root.2",value:null,img:"image/avoMacCheese.jpg", link: "http://www.epicurious.com/recipes/member/views/stovetop-avocado-mac-and-cheese-52639981"},
+				{id:"root.3",value:null,img:"image/vburger.jpg", link:"http://allrecipes.com/recipe/85452/homemade-black-bean-veggie-burgers" },
+				{id:"root.4",value:null,img:"image/sauce.jpeg", link:"http://cooking.nytimes.com/recipes/1017650-quick-fresh-tomato-sauce"},
+				{id:"root.6",value:null,img:"image/fries.jpg", link:"http://allrecipes.com/recipe/50223/homemade-crispy-seasoned-french-fries/"},
+				{id:"root.7",value:null,img:"image/rice.jpg", link:"http://allrecipes.com/recipe/79543/fried-rice-restaurant-style"},
+				{id:"root.8",value:null,img:"image/jalapeno.jpg", link:"http://www.foodnetwork.com/recipes/jeff-mauro/jalapeno-popper-grilled-cheese-recipe.html"}
+			]
 
-
-		cell.append("svg:rect")
-				.attr("width", function(d) { return d.dx - 1; })
-				.attr("height", function(d) { return d.dy - 1; })
-				//.style("fill", function(d) { return color(d.parent.name); });
-				.style("fill", function(d) { return color(d.parent.name); });
-
-		cell.append("defs")
-				.append("pattern")
-				.attr("id", "bg")
-				.append("image")
-				.attr("xlink:href", "image/coffee.jpg");
-
-		cell.append("rect")
-				.attr("fill", "url(#bg)");
-
-		cell.append("svg:a")
-				.attr("xlink:href", function(d){return d.url;})  // <-- reading the new "url" property
-				.append("svg:rect");
+			var width = document.querySelector("#graph").clientWidth
+			var height = document.querySelector("#graph").clientHeight
+			var div = d3.select("#graph").append("div").attr("width", width).attr("height", height)
+			console.log(width)
+			console.log(height)
 
 
-		cell.append("svg:image")
-				.attr("xlink:href",  function(d){return d.pic;})
-				.attr("image-anchor", "middle")
-				.attr("width", 200)
-				.attr("height", 200)
-				.attr("x", 10)
-				.attr("y",0);
+			setInterval(draw, 5000)
+			draw()
 
 
-		cell.append("svg:text")
-				.attr("x", function(d) { return d.dx / 2; })
-				.attr("y", function(d) { return d.dy / 2; })
-				.attr("dy", ".35em")
-				.attr("text-anchor", "bottom")
-				.text(function(d) { return d.name; })
-				.style("font-size","18px");
-		//.style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
+			function draw() {
+
+				randomize()
+
+				var stratify = d3.stratify()
+						.parentId(function(d) {return d.id.substring(0, d.id.lastIndexOf(".")); });
+
+				var root = stratify(data).sum(function(d) { return d.value })
+
+				var treemap = d3.treemap()
+						.tile(d3.treemapBinary)
+						.size([width, height])
+						.padding(1)
+						.round(true);
+
+				treemap(root)
+				drawTreemap(root)
+
+			}
+
+			function randomize() {
+				data.filter(function(d){ return d.id !== "root"})
+						.forEach(function(d){
+							d.value = ~~(d3.randomUniform(1, 10)())
+						})
+			}
 
 
-		cell.append("svg: a")
-				.attr("xlink:href", function(d) { return d.url; });
+			function drawTreemap(root) {
 
-		d3.select(window).on("click", function() { zoom(root); });
+				var node = div.selectAll(".node").data(root.children)
 
-		d3.select("select").on("change", function() {
-			treemap.value(this.value == "size" ? size : count).nodes(root);
-			zoom(node);
-		});
-	});
+				var newNode = node.enter()
+						.append("div").attr("class", "node")
 
-	function size(d) {
-		return d.size;
-	}
+				node.merge(newNode)
+						.transition()
+						.duration(1000)
+						.style("left", function(d) { return d.x0 + "px" })
+						.style("top", function(d) { return d.y0 + "px" })
+						.style("width", function(d) { return (d.x1 - d.x0) + "px" })
+						.style("height", function(d) { return (d.y1 - d.y0) + "px"})
+						.style("background-image", function(d){ return "url("+d.data.img+")"})
 
-	function count(d) {
-		return 1;
-	}
-
-	function zoom(d) {
-		var kx = w / d.dx, ky = h / d.dy;
-		x.domain([d.x, d.x + d.dx]);
-		y.domain([d.y, d.y + d.dy]);
-
-		var t = svg.selectAll("g.cell").transition()
-				.duration(d3.event.altKey ? 7500 : 750)
-				.attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-
-		t.select("rect")
-				.attr("width", function(d) { return kx * d.dx - 1; })
-				.attr("height", function(d) { return ky * d.dy - 1; })
-
-		t.select("text")
-				.attr("x", function(d) { return kx * d.dx / 2; })
-				.attr("y", function(d) { return ky * d.dy / 2; })
-				.style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
-
-		node = d;
-		d3.event.stopPropagation();
-	}
-
-</script>
-</body>
-</html>
+			}
+		}());
+	</script>
+	</body>
+	</html>
