@@ -1,152 +1,77 @@
 <!DOCTYPE html>
 
-<!--Source: http://bl.ocks.org/mbostock/4063582
- We used the code from a d3 Treemap visual
- but changed it to fit our website-->
-
-<html xmlns:xlink="http://www.w3.org/1999/xlink">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <link type="text/css" rel="stylesheet" href="style.css"/>
-    <script type="text/javascript" src="d3.js"></script>
-    <script type="text/javascript" src="d3.layout.js"></script>
-    <style type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-        .chart {
-            display: block;
-            margin: auto;
-            margin-top: 40px;
-        }
+    <link rel="stylesheet" type="text/css" href="mystyles.css">
 
-        text {
-            font-size: 11px;
-        }
 
-        rect {
-            fill: none;
-        }
-
-    </style>
 </head>
+
+
 <body>
-<div id="body">
-    <p align="center" style="font-size:20px" ><b>Welcome to your Bucket!</b></p>
-    <div id="footer">
-    </div>
-</div>
-<script type="text/javascript">
 
-    var w = 1280 - 80,
-            h = 800 - 180,
-            x = d3.scale.linear().range([0, w]),
-            y = d3.scale.linear().range([0, h]),
-            color = d3.scale.category20c(),
-            root,
-            node;
+    <!--Code for the menu bar -->
+    <style>
+        .navbar {
+            background: rgba(0,0,0,0.2);
+            background-border: rgba(0,0,0,0.2);
+        }
+        #menu {
+            color: white;
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            font-variant: small-caps;
+            color: white; text-shadow: black 0.1em 0.1em 0.2em;
+        }
+        .navbar li {
+            color: blue;
+        }
+    </style>
 
-    var treemap = d3.layout.treemap()
-            .round(false)
-            .size([w, h])
-            .sticky(true)
-            .value(function(d) { return d.size; });
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="landing.html">
+                    <img alt="Brand" src="image/logo.jpg">
+                </a>
+            </div>
 
-    var svg = d3.select("#body").append("div")
-            .attr("class", "chart")
-            .style("width", w + "px")
-            .style("height", h + "px")
-            .append("svg:svg")
-            .attr("width", w)
-            .attr("height", h)
-            .append("svg:g")
-            .attr("transform", "translate(.5,.5)");
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="landing.html" id="menu">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="search.html" id="menu">Search</a></li>
+                    <li><a href="bucket.html" id="menu">Bucket</a></li>
+                    <li><a href="trending.html" id="menu">Trending Recipes</a></li>
+                </ul>
 
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a href="login.html" id="menu">Login</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
-    d3.json("flare.json", function(data) {
-        node = root = data;
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 
-        var nodes = treemap.nodes(root)
-                .filter(function(d) { return !d.children; });
-
-        var cell = svg.selectAll("g")
-                .data(nodes)
-                .enter().append("svg:g")
-                .attr("class", "cell")
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-                //.on("click", function(d) { return zoom(node == d.parent ? root : d.parent); })
-                .on("click", function(d) { return(window.location.assign(d.url) );});
-
-
-        cell.append("svg:rect")
-                .attr("width", function(d) { return d.dx - 1; })
-                .attr("height", function(d) { return d.dy - 1; })
-                .style("fill", function(d) { return color(d.parent.name); });
-
-        cell.append("svg:a")
-                .attr("xlink:href", function(d){return d.url;})  // <-- reading the new "url" property
-                .append("svg:rect");
-
-
-        cell.append("svg:image")
-                .attr("xlink:href",  function(d){return d.pic;})
-                .attr("image-anchor", "middle")
-                .attr("width", 200)
-                .attr("height", 200)
-                .attr("x", 10)
-                .attr("y",0);
-
-
-        cell.append("svg:text")
-                .attr("x", function(d) { return d.dx / 2; })
-                .attr("y", function(d) { return d.dy / 2; })
-                .attr("dy", ".35em")
-                .attr("text-anchor", "bottom")
-                .text(function(d) { return d.name; })
-                .style("font-size","34px");
-        //.style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
-
-
-        cell.append("svg: a")
-                .attr("xlink:href", function(d) { return d.url; });
-
-        d3.select(window).on("click", function() { zoom(root); });
-
-        d3.select("select").on("change", function() {
-            treemap.value(this.value == "size" ? size : count).nodes(root);
-            zoom(node);
-        });
-    });
-
-    function size(d) {
-        return d.size;
-    }
-
-    function count(d) {
-        return 1;
-    }
-
-    function zoom(d) {
-        var kx = w / d.dx, ky = h / d.dy;
-        x.domain([d.x, d.x + d.dx]);
-        y.domain([d.y, d.y + d.dy]);
-
-        var t = svg.selectAll("g.cell").transition()
-                .duration(d3.event.altKey ? 7500 : 750)
-                .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
-
-        t.select("rect")
-                .attr("width", function(d) { return kx * d.dx - 1; })
-                .attr("height", function(d) { return ky * d.dy - 1; })
-
-        t.select("text")
-                .attr("x", function(d) { return kx * d.dx / 2; })
-                .attr("y", function(d) { return ky * d.dy / 2; })
-                .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
-
-        node = d;
-        d3.event.stopPropagation();
-    }
-
-</script>
 </body>
-</html>

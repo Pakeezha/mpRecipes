@@ -72,11 +72,65 @@ that gives them access to their account  -->
 
 	<link rel="stylesheet" href="loginStyles.css">
 
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
 
 </head>
 
 
 <Body>
+
+	<style>
+		.navbar {
+			background: rgba(0,0,0,0.2);
+			background-border: rgba(0,0,0,0.2);
+		}
+		#menu {
+			color: white;
+			font-family: 'Raleway', sans-serif;
+			font-size: 20px;
+			font-weight: bold;
+			font-variant: small-caps;
+			color: white; text-shadow: black 0.1em 0.1em 0.2em;
+		}
+		.navbar li {
+			color: blue;
+		}
+		.menu-left ul li {
+			display:inline-block;
+			vertical-align: top;
+			width: 50%; // should be less than 50%
+		}
+	</style>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="landing.html">
+					<img alt="Brand" src="image/logo.jpg">
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="menu-left" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="landing.html" id="menu">Home <span class="sr-only">(current)</span></a></li>
+					<li><a href="search.html" id="menu">Search</a></li>
+					<li><a href="bucket.html" id="menu">Bucket</a></li>
+					<li><a href="trending.html" id="menu">Trending Recipes</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li> <a href="login.html" id="menu">Login</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+			crossorigin="anonymous"></script>
 
 	<div id="tabs" class="rt-tabs">
 		<ul class="tabs cf">
@@ -116,6 +170,26 @@ that gives them access to their account  -->
 		</div>
 
 	</div>
+	
+	<!-- Trigger/Open The Modal -->
+<button id="myBtn">Help</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">Click to Close</span>
+    <p>You are currently in the home page.
+    	Navigate to the menu 
+    	- search page will allow you to search your favorite
+    	ingredient and display its recipes.
+    	- Bucket is your saved searches stored so that you can come back to at any time.
+    	- Trending page is what is hot and new, that you can instantly have the recipe for.
+    	- Login page, you may log in and out at anytime. </p>
+  </div>
+
+</div>
 
 
 	<!--Code to connect to firebase-->
