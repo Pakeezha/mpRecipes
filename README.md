@@ -25,6 +25,7 @@ Bucket (includes d3 visual)
 heroku URL:
 https://protected-eyrie-35951.herokuapp.com/
 
+
 HW 8 requirments:
 The three scenarios which we fully implemented were:
 1) user login/register when making an account or using an exising one. The user's firstname and unique token is printed in the javascript console
