@@ -74,3 +74,18 @@ input[type="checkbox"]:checked {
   width: 30px;
 }
 
+#hello {
+    background: rgba(0,0,0,0.2);
+    background-border: rgba(0,0,0,0.2);
+}
+#menu {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: white; text-shadow: black 0.1em 0.1em 0.2em;
+}
+.navbar li {
+    color: blue;
+}
