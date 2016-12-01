@@ -23,7 +23,8 @@ Trending recipes (updated to use React)
 Bucket (includes d3 visual)
 
 heroku URL:
-https://protected-eyrie-35951.herokuapp.com/
+https://protected-eyrie-35951.herokuapp.com/ 
+
 
 HW 8 requirments:
 The three scenarios which we fully implemented were:
