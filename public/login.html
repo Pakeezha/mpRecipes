@@ -1,11 +1,75 @@
-<!-- This is the login page and it allows the users to login if they already have an 
-account or register for a new account if they would like to make them. This is the page 
+<!-- This is the login page and it allows the users to login if they already have an
+account or register for a new account if they would like to make them. This is the page
 that gives them access to their account  -->
 
 <html>
 
 <head>
 	<title>Login</title>
+</head>
+
+<!--Bootstrap links -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="mystyles.css">
+
+
+<!--Code for the menu bar -->
+<style>
+	.navbar {
+		background: rgba(0,0,0,0.2);
+		background-border: rgba(0,0,0,0.2);
+	}
+	#menu {
+		color: white;
+		font-family: 'Raleway', sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		font-variant: small-caps;
+		color: white; text-shadow: black 0.1em 0.1em 0.2em;
+	}
+	.navbar li {
+		color: blue;
+	}
+</style>
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="landing.html">
+				<img alt="Brand" src="image/logo.jpg">
+			</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="landing.html" id="menu">Home <span class="sr-only">(current)</span></a></li>
+				<li><a href="trending.html" id="menu">Trending Recipes</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li> <a href="login.html" id="menu">Login</a></li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
+
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,142 +134,93 @@ that gives them access to their account  -->
 
 	</script>
 
-	<link rel="stylesheet" href="loginStyles.css">
+<style>
+	.ui-tabs .ui-tabs-nav
+	{
+		background: darksalmon;
+	}
+</style>
 
-	<link rel="stylesheet" type="text/css" href="mystyles.css">
 
-</head>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
 
+<div id="tabs" class="rt-tabs">
+	<ul class="tabs cf" id="boxes">
+		<li><a href="#tab-1">Login</a></li>
+		<li><a href="#tab-2">Register</a></li>
+	</ul>
+	<div id="tab-1" class="box">
+		<p>
+		<p>Please login if you already have an account:</p>
+		Please Enter your Email:
+		<input id="email2" type="text" name="email" placeholder="eg. user@email.com" ><br>
+		Please Enter your Password:
+		<input id="password2" type="password" name="password" placeholder="password"><br>
 
-<Body>
-
-	<style>
-		.navbar {
-			background: rgba(0,0,0,0.2);
-			background-border: rgba(0,0,0,0.2);
-		}
-		#menu {
-			color: white;
-			font-family: 'Raleway', sans-serif;
-			font-size: 20px;
-			font-weight: bold;
-			font-variant: small-caps;
-			color: white; text-shadow: black 0.1em 0.1em 0.2em;
-		}
-		.navbar li {
-			color: blue;
-		}
-		.menu-left ul li {
-			display:inline-block;
-			vertical-align: top;
-			width: 50%; // should be less than 50%
-		}
-	</style>
-
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="landing.html">
-					<img alt="Brand" src="image/logo.jpg">
-				</a>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="menu-left" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="landing.html" id="menu">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="search.html" id="menu">Search</a></li>
-					<li><a href="bucket.html" id="menu">Bucket</a></li>
-					<li><a href="trending.html" id="menu">Trending Recipes</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li> <a href="login.html" id="menu">Login</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-			crossorigin="anonymous"></script>
-
-	<div id="tabs" class="rt-tabs">
-		<ul class="tabs cf">
-			<li ><a href="#tab-1">Login</a></li>
-			<li><a href="#tab-2">Register</a></li>
-		</ul>
-		<div id="tab-1" class="box">
-			<p>
-				<p>Please login if you already have an account:</p>
-				Please Enter your Email:
-				<input id="email2" type="text" name="email" placeholder="eg. user@email.com" ><br>
-				Please Enter your Password:
-				<input id="password2" type="password" name="password" placeholder="password"><br>
-
-				<!--creates a submit button and adds a validation feature whenever the button is clicked-->
-				<button id="Submit">Login</button>
-				<p id="warningText"></p>
-			</p>
-		</div>
-		<div id="tab-2" class="box">
-			<p>
-				<p>Register for a new account by entering your email address and creating a new password:</p>
-				First Name:
-				<input id="firstName" required type="text" name="firstName" ><br>
-				Last Name:
-				<input id="lastName" required type="text" name="lastName" ><br>
-				Please Enter your Email:
-				<input id="email1" required type="text" name="email" placeholder="eg. user@email.com" ><br>
-				Please Enter your Password:
-				<input id="password1" type="password" name="password" placeholder="at least 6 characters"><br>
-				Please Enter your favorite food:
-				<input id="favFood" required type="text" name="favFood" ><br>
-				Upload a profile picture
-				<!--<input id="profileImage" type="file" /> -->
-				<button id="Register" type="submit">Register</button>
-			</p>
-		</div>
-
+		<!--creates a submit button and adds a validation feature whenever the button is clicked-->
+		<button id="Submit">Login</button>
+		<p id="warningText"></p>
+		</p>
 	</div>
-	
-	<!-- Trigger/Open The Modal -->
+	<div id="tab-2" class="box">
+		<p>
+		<p>Register for a new account by entering your email address and creating a new password:</p>
+		First Name:
+		<input id="firstName" required type="text" name="firstName" ><br>
+		Last Name:
+		<input id="lastName" required type="text" name="lastName" ><br>
+		Please Enter your Email:
+		<input id="email1" required type="text" name="email" placeholder="eg. user@email.com" ><br>
+		Please Enter your Password:
+		<input id="password1" type="password" name="password" placeholder="at least 6 characters"><br>
+		Please Enter your favorite food:
+		<input id="favFood" required type="text" name="favFood" ><br>
+		Upload a profile picture
+		<!--<input id="profileImage" type="file" /> -->
+		<button id="Register" type="submit">Register</button>
+		</p>
+	</div>
+
+</div>
+
+<!-- Trigger/Open The Modal -->
 <button id="myBtn">Help</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">Click to Close</span>
-    <p>You are currently in the home page.
-    	Navigate to the menu 
-    	- search page will allow you to search your favorite
-    	ingredient and display its recipes.
-    	- Bucket is your saved searches stored so that you can come back to at any time.
-    	- Trending page is what is hot and new, that you can instantly have the recipe for.
-    	- Login page, you may log in and out at anytime. </p>
-  </div>
+	<!-- Modal content -->
+	<div class="modal-content">
+		<span class="close">Click to Close</span>
+		<p>You are currently in the home page.
+			Navigate to the menu
+			- search page will allow you to search your favorite
+			ingredient and display its recipes.
+			- Bucket is your saved searches stored so that you can come back to at any time.
+			- Trending page is what is hot and new, that you can instantly have the recipe for.
+			- Login page, you may log in and out at anytime. </p>
+	</div>
 
 </div>
 
 
-	<!--Code to connect to firebase-->
-	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
-	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-	<script src="app.js"></script>
+<!--Code to connect to firebase-->
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script src="app.js"></script>
 
 
-	<!--Navigates to the previous page the browser was on -->
-	<form action = "landing.html">
-	</form>
+<!--Navigates to the previous page the browser was on -->
+<form action = "landing.html">
+</form>
 
 
-	<div id="example">
-		<!-- This element's contents will be replaced with your component. -->
-	</div>
+<div id="example">
+	<!-- This element's contents will be replaced with your component. -->
+</div>
 
 
 
