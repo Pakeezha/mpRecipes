@@ -56,9 +56,6 @@ h1 {
 .invisible{
 	display:none;
 }
-input:invalid{
-	border:2px solid red;
-}
 
 
 input[type="checkbox"]:checked {

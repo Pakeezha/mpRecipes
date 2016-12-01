@@ -109,8 +109,6 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="landing.html" id="menu">Home <span class="sr-only">(current)</span></a></li>
-					<li><a href="search.html" id="menu">Search</a></li>
-					<li><a href="bucket.html" id="menu">Bucket</a></li>
 					<li><a href="trending.html" id="menu">Trending Recipes</a></li>
 				</ul>
 				
@@ -121,8 +119,8 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-
-	<div id="box">hello</div>
+	<button type="button" onclick="alert('This is the trending page. You may view what is currently trending and view its recipe.')">Help Me!</button>
+	<div id="box"></div>
 
 	<div id="graph"></div>
 
@@ -145,13 +143,13 @@
 			]
 
 			var width = document.querySelector("#graph").clientWidth
-			var height = document.querySelector("#graph").clientHeight
+			var height = document.querySelector("#graph").clientHeight-100
 			var div = d3.select("#graph").append("div").attr("width", width).attr("height", height)
 			console.log(width)
 			console.log(height)
 
 
-			setInterval(draw, 5000)
+			setInterval(draw, 2000)
 			draw()
 
 
@@ -194,10 +192,12 @@
 						.transition()
 						.duration(1000)
 						.style("left", function(d) { return d.x0 + "px" })
-						.style("top", function(d) { return d.y0 + "px" })
+						.style("top", function(d) { return 100+d.y0 + "px" })
 						.style("width", function(d) { return (d.x1 - d.x0) + "px" })
 						.style("height", function(d) { return (d.y1 - d.y0) + "px"})
 						.style("background-image", function(d){ return "url("+d.data.img+")"})
+						.attr("xlink:href", function(d){return d.link;})
+
 
 			}
 		}());
@@ -206,7 +206,7 @@
 <html>
 <body>
 
-<button type="button" onclick="alert('This is the trending page. You may view what is currently trending and view its recipe.')">Help Me!</button>
+
  
 </body>
 </html>
